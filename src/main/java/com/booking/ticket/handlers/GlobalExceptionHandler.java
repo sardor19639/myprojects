@@ -11,7 +11,6 @@ import com.booking.ticket.logger.GMoikaLogger;
 import com.booking.ticket.logger.LogMessage;
 
 import com.booking.ticket.exceptions.AccessDeniedException;
-import com.booking.ticket.exceptions.EmptyMemCacheException;
 import com.booking.ticket.exceptions.InvalidUserInputException;
 import com.booking.ticket.exceptions.NoSuchElementInDBException;
 import com.booking.ticket.exceptions.RequestLimitException;
@@ -182,17 +181,6 @@ public class GlobalExceptionHandler {
         logger.errorLog(e);
         return ResponseEntity.
                 status(HttpStatus.BAD_REQUEST).
-                body(responseJO.toString());
-    }
-
-    @ExceptionHandler(value = EmptyMemCacheException.class)
-    public ResponseEntity<String> emptyMCExcp(EmptyMemCacheException e) {
-        logger.errorLog(e);
-        final JsonObject responseJO = new JsonObject();
-        responseJO.addProperty("error",1 );
-        responseJO.addProperty("message", e.message().getCause());
-        return ResponseEntity.
-                status(HttpStatus.UNAUTHORIZED).
                 body(responseJO.toString());
     }
 

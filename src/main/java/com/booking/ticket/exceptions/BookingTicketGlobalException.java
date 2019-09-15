@@ -6,8 +6,7 @@
 package com.booking.ticket.exceptions;
 
 import com.booking.ticket.logger.LogMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 /**
  *
