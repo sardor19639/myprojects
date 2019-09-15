@@ -6,8 +6,8 @@
 package com.booking.ticket.controllers;
 
 import com.booking.ticket.entities.Booking;
-import com.booking.ticket.enums.Enums;
-import com.booking.ticket.logger.GMoikaLogger;
+
+import com.booking.ticket.logger.BookingTicketLogger;
 import com.booking.ticket.logger.LogMessage;
 import com.booking.ticket.services.BookingService;
 import com.booking.ticket.wrapper.SortWrapper;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookingController {
     
-    private final GMoikaLogger logger = GMoikaLogger.getInstance();
+    private final BookingTicketLogger logger = BookingTicketLogger.getInstance();
     
     private static final String CLASS_NAME = FilmController.class.getSimpleName();
     

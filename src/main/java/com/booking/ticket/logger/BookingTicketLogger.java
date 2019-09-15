@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-public final class GMoikaLogger {
+public final class BookingTicketLogger {
      @Bean
     public ServletContextInitializer servletContextInitializer() {
         return (ServletContext servletContext) -> {
@@ -18,18 +18,18 @@ public final class GMoikaLogger {
            
         };
     }
-    private static Logger log = LoggerFactory.getLogger(GMoikaLogger.class.getName());
+    private static Logger log = LoggerFactory.getLogger(BookingTicketLogger.class.getName());
     private static final String PROJECT = "GMoika";
 
-    private GMoikaLogger() {
+    private BookingTicketLogger() {
     }
 
     public static class SingletonHolder {
 
-        public static final GMoikaLogger INSTANCE = new GMoikaLogger();
+        public static final BookingTicketLogger INSTANCE = new BookingTicketLogger();
     }
 
-    public static GMoikaLogger getInstance() {
+    public static BookingTicketLogger getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -58,8 +58,6 @@ public final class GMoikaLogger {
     public void onSuccessLog(LogMessage message) {
         log.info("\n" + "Reason : SUCCESS" + "\n , "
                 + "HttpRequest: " + message.getRequest() + "\n , "
-              
-                //+ "user id: " + message.getUserId() + "\n , "
                 + "Method name: " + message.getMethodName() + "\n , "
                 + "RequestBody: " + (message.getRequestBody() == null ? "empty" : message.getRequestBody().toString()) + "\n\n  ");
     }

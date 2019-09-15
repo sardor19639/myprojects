@@ -7,7 +7,6 @@ package com.booking.ticket.handlers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.booking.ticket.enums.Enums;
-import com.booking.ticket.logger.GMoikaLogger;
 import com.booking.ticket.logger.LogMessage;
 
 import com.booking.ticket.exceptions.AccessDeniedException;
@@ -16,6 +15,7 @@ import com.booking.ticket.exceptions.NoSuchElementInDBException;
 import com.booking.ticket.exceptions.RequestLimitException;
 import com.booking.ticket.exceptions.UniqueViolationException;
 import com.booking.ticket.exceptions.UnknownException;
+import com.booking.ticket.logger.BookingTicketLogger;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import java.io.PrintWriter;
@@ -52,7 +52,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class GlobalExceptionHandler {
 
-    GMoikaLogger logger = GMoikaLogger.getInstance();
+    BookingTicketLogger logger = BookingTicketLogger.getInstance();
     @Autowired
     
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);

@@ -5,7 +5,7 @@
  */
 package com.booking.ticket.logger;
 
-import com.booking.ticket.enums.Enums;
+
 
 /**
  *
@@ -19,19 +19,10 @@ public class LogMessage {
     private String request;
     private String errorCode;
     private Object requestBody;
-    private int userId;
-
+   
     private LogMessage() {
     }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-     
+  
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
@@ -77,11 +68,6 @@ public class LogMessage {
 
         public Builder setMethodName(String methodName) {
             LogMessage.this.methodName = methodName;
-            return this;
-        }
-
-        public Builder setUserId(int userId) {
-            LogMessage.this.userId = userId;
             return this;
         }
 
