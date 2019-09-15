@@ -11,7 +11,7 @@ import com.booking.ticket.logger.LogMessage;
 import com.booking.ticket.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.booking.ticket.logger.GMoikaLogger;
+import com.booking.ticket.logger.BookingTicketLogger;
 
 /**
  *
@@ -20,7 +20,7 @@ import com.booking.ticket.logger.GMoikaLogger;
 @Component
 public class FilmController {
     
-    private final GMoikaLogger logger = GMoikaLogger.getInstance();
+    private final BookingTicketLogger logger = BookingTicketLogger.getInstance();
     
     private static final String CLASS_NAME = FilmController.class.getSimpleName();
     
