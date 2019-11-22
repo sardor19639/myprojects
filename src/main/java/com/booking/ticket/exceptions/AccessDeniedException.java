@@ -9,7 +9,7 @@ import com.booking.ticket.logger.LogMessage;
 
 /**
  *
- * @author strogiy.otec
+ * @author sardorrokhillaev
  */
 public class AccessDeniedException extends BookingTicketGlobalException {
 

@@ -9,7 +9,7 @@ package com.booking.ticket.logger;
 
 /**
  *
- * @author strogiy.otec
+ * @author sardorrokhillaev
  */
 public class LogMessage {
 

@@ -9,7 +9,7 @@ import com.booking.ticket.logger.LogMessage;
 
 /**
  *
- * @author strogiy.otec
+ * @author sardorrokhillaev
  */
 public class RequestLimitException extends BookingTicketGlobalException {
         public RequestLimitException(LogMessage message){

@@ -9,7 +9,7 @@ import com.booking.ticket.logger.LogMessage;
 
 /**
  *
- * @author strogiy.otec
+ * @author sardorrokhillaev
  */
 public class InvalidUserInputException extends BookingTicketGlobalException {
         public InvalidUserInputException(LogMessage message){

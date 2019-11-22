@@ -6,13 +6,12 @@
 package com.booking.ticket.services;
 
 
-import com.booking.ticket.entities.Booking;
+
 import com.booking.ticket.entities.Films;
 import com.booking.ticket.entities.Schedule;
 import com.booking.ticket.enums.Enums;
 import com.booking.ticket.exceptions.NoSuchElementInDBException;
 import com.booking.ticket.logger.LogMessage;
-import com.booking.ticket.repositories.BookingRepository;
 import com.booking.ticket.repositories.FilmRepository;
 import com.booking.ticket.repositories.ScheduleRepository;
 import com.booking.ticket.wrapper.SortWrapper;

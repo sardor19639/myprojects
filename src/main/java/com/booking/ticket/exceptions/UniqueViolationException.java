@@ -9,7 +9,7 @@ import com.booking.ticket.logger.LogMessage;
 
 /**
  *
- * @author strogiy.otec
+ * @author sardorrokhillaev
  */
 public class UniqueViolationException extends BookingTicketGlobalException {
         public UniqueViolationException(LogMessage message){
