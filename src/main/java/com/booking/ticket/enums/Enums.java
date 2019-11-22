@@ -24,24 +24,7 @@ public class Enums {
         ACCESS_DENIED("{\"error\":2}"),
         WRONG_INPUT("{\"error\":4}"),
         WRONG_INPUT_DATA("{\"error\":5}"),
-        UNKNOWN_ERROR("{\"error\":10}"),
-        FOREIGN_KEY_VIOLATION("{\"error\":11}"),
-        UNIQUE_VIOLATION("{\"error\":21}"),
-        ONLY_ONE_ACTIVE_MANAGER("{\"error\":22}"),
-        REQUEST_LIMIT_WAS_REACHED("{\"error\":30}"),
-        SEND_SMS_LIMIT_IS_REACHED("{\"error\":31}"),
-        EMAIL_IS_NOT_VERIFIED("{\"error\":100}"),
-        SMS_NUMBER_IS_NOT_VERIFIED("{\"error\":101}"),
-        LIMIT_WAS_REACHED("{\"error\":103}"),
-        NOT_ENOUGH_BONUSES("{\"error\":120}"),
-        WRONG_WIALON_CONNECTION_DATA("{\"error\":150}"),
-        WIALON_ACCOUNT_IS_NOT_ENABLED("{\"error\":151}"),
-        ALREADY_REGISTERED("{\"error\":152}"),
-        BOX_IS_BUSY("{\"error\":154}"),
-        USER_IS_BLOCKED("{\"error\":156}"),
-        TOO_LARGE_FILE("{\"error\":157}"),
-        ALREADY_IN_DB("{\"error\":158}"),
-        ID_NOT_EXIST_IN_DB("{\"error\":159}");
+        UNKNOWN_ERROR("{\"error\":10}");
         private String value;
 
         private Error(String value) {

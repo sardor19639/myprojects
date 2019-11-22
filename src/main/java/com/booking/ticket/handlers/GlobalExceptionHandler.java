@@ -9,23 +9,15 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.booking.ticket.enums.Enums;
 import com.booking.ticket.logger.LogMessage;
 
-import com.booking.ticket.exceptions.AccessDeniedException;
 import com.booking.ticket.exceptions.InvalidUserInputException;
 import com.booking.ticket.exceptions.NoSuchElementInDBException;
-import com.booking.ticket.exceptions.RequestLimitException;
-import com.booking.ticket.exceptions.UniqueViolationException;
-import com.booking.ticket.exceptions.UnknownException;
 import com.booking.ticket.logger.BookingTicketLogger;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.net.ConnectException;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
 import java.util.Date;
 import java.util.Set;
-import java.util.concurrent.TimeoutException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import org.postgresql.util.PSQLException;
@@ -184,17 +176,6 @@ public class GlobalExceptionHandler {
                 body(responseJO.toString());
     }
 
-    @ExceptionHandler(value = AccessDeniedException.class)
-    public ResponseEntity<String> accessDeniedException(AccessDeniedException e) {
-        logger.errorLog(e);
-        final JsonObject responseJO = new JsonObject();
-        responseJO.addProperty("error",2 );
-        responseJO.addProperty("message", e.message().getCause());
-        return ResponseEntity.
-                status(HttpStatus.CONFLICT).
-                body(responseJO.toString());
-    }
-
     @ExceptionHandler(value = NoSuchElementInDBException.class)
     public ResponseEntity<String> noSuchElemInDBExc(NoSuchElementInDBException e) {
         logger.errorLog(e);
@@ -204,71 +185,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.
                 status(HttpStatus.NOT_FOUND).
                 body(responseJO.toString());
-    }
-
-    @ExceptionHandler(value = UnknownException.class)
-    public ResponseEntity<String> unknownExc(UnknownException e) {
-        logger.errorLog(e);
-        final JsonObject responseJO = new JsonObject();
-        responseJO.addProperty("error",10 );
-        responseJO.addProperty("message", e.message().getCause());
-        return ResponseEntity.
-                status(HttpStatus.INTERNAL_SERVER_ERROR).
-                body(responseJO.toString());
-    }
-
-    @ExceptionHandler(value = RequestLimitException.class)
-    public ResponseEntity<String> requetLimitExc(RequestLimitException e) {
-        logger.errorLog(e);
-        final JsonObject responseJO = new JsonObject();
-        responseJO.addProperty("error",30);
-        responseJO.addProperty("message", e.message().getCause());
-        return ResponseEntity.
-                status(HttpStatus.TOO_MANY_REQUESTS).
-                body(responseJO.toString());
-    }
-
-    @ExceptionHandler(value = UniqueViolationException.class)
-    public ResponseEntity<String> uniqueViolExc(UniqueViolationException e) {
-        logger.errorLog(e);
-        final JsonObject responseJO = new JsonObject();
-        responseJO.addProperty("error",21);
-        responseJO.addProperty("message", e.message().getCause());
-        return ResponseEntity.
-                status(HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS).
-                body(responseJO.toString());
-    }
-
-    @ExceptionHandler(SocketTimeoutException.class)
-    public ResponseEntity<String> socketTimeOutExc(SocketTimeoutException exc) {
-        logger.simpleLog("SOcket Time out exc");
-        return ResponseEntity.
-                status(HttpStatus.INTERNAL_SERVER_ERROR).
-                body(Enums.Error.UNKNOWN_ERROR.toString());
-    }
-    
-    @ExceptionHandler(SocketException.class)
-    public ResponseEntity<String> socketTimeOutExc(SocketException exc) {
-        logger.simpleLog("Socket  exc");
-        return ResponseEntity.
-                status(HttpStatus.INTERNAL_SERVER_ERROR).
-                body(Enums.Error.UNKNOWN_ERROR.toString());
-    }
-
-    @ExceptionHandler(TimeoutException.class)
-    public ResponseEntity<String> timeOutExc(TimeoutException exc) {
-        logger.simpleLog("Time out exception");
-        return ResponseEntity.
-                status(HttpStatus.INTERNAL_SERVER_ERROR).
-                body(Enums.Error.UNKNOWN_ERROR.toString());
-    }
-
-    @ExceptionHandler(ConnectException.class)
-    public ResponseEntity<String> connectException(ConnectException exc) {
-        logger.simpleLog("Connect exception");
-        return ResponseEntity.
-                status(HttpStatus.INTERNAL_SERVER_ERROR).
-                body(Enums.Error.UNKNOWN_ERROR.toString());
     }
 
     @ExceptionHandler(PSQLException.class)

@@ -19,7 +19,7 @@ public final class BookingTicketLogger {
         };
     }
     private static Logger log = LoggerFactory.getLogger(BookingTicketLogger.class.getName());
-    private static final String PROJECT = "GMoika";
+    private static final String PROJECT = "CinemaTicketBooking";
 
     private BookingTicketLogger() {
     }
