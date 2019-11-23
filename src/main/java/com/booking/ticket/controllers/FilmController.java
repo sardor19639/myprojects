@@ -5,6 +5,7 @@
  */
 package com.booking.ticket.controllers;
 
+import com.booking.ticket.entities.Films;
 import com.booking.ticket.wrapper.SortWrapper;
 import com.google.gson.JsonObject;
 import com.booking.ticket.logger.LogMessage;
@@ -51,4 +52,15 @@ public class FilmController {
         return res.toString();
     }
     
+    public String updateFilm(Films film) {
+        LogMessage message = LogMessage.newBuilder()
+                .setClassName(CLASS_NAME)
+                .setMethodName("updateFilm")
+                .setRequest("owners/owner PUT")
+                .setRequestBody(film)
+                .build();
+        final JsonObject resultJO = filmService.updateFilm(film, message);
+        logger.onSuccessLog(message);
+        return resultJO.toString();
+    }
 }

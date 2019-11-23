@@ -19,7 +19,7 @@ public class SortWrapper {
     private String filterType;
     private String genre;
     private String city;
-    private Date showTime;
+    private Date showDate;
     private Integer filmId;
     private Integer number;
     private Date dateFrom;
@@ -33,7 +33,7 @@ public class SortWrapper {
                 .append("name", name)
                 .append("genre", genre)
                 .append("city",city)
-                .append("showTime", showTime)
+                .append("showTime", showDate)
                 .append("filmId",filmId)
                 .append("number", number)
                 .append("dateFrom",dateFrom)
@@ -73,12 +73,12 @@ public class SortWrapper {
         this.city = city;
     }
     
-    public Date getShowTime() {
-        return showTime;
+    public Date getShowDate() {
+        return showDate;
     }
 
-    public void set(Date showTime) {
-        this.showTime = showTime;
+    public void setShowDate(Date showDate) {
+        this.showDate = showDate;
     }
     
     public Integer getFilmId() {
@@ -139,8 +139,8 @@ public class SortWrapper {
             return this;
         }
         
-        public Builder setShowTime(Date showTime) {
-            SortWrapper.this.showTime = showTime;
+        public Builder setShowTime(Date showDate) {
+            SortWrapper.this.showDate = showDate;
             return this;
         }
         

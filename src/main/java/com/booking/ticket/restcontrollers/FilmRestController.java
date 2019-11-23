@@ -8,8 +8,12 @@ package com.booking.ticket.restcontrollers;
 import com.booking.ticket.controllers.BookingController;
 import com.booking.ticket.controllers.FilmController;
 import com.booking.ticket.entities.Booking;
+import com.booking.ticket.entities.Films;
 import com.booking.ticket.wrapper.SortWrapper;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.Date;
+import java.util.concurrent.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  *
@@ -53,12 +58,12 @@ public class FilmRestController {
         method = RequestMethod.GET,
         produces = "application/json;charset=UTF-8")
     public ResponseEntity<String> getSchedule(
-        @RequestParam(value = "showTime", required = true) Date showTime,
+        @RequestParam(value = "showDate", required = true) Date showDate,
         @RequestParam(value = "city", required = true) String city,
         @RequestParam(value = "filmId", required = true) Integer filmId) {
         SortWrapper wrapper = SortWrapper.newBuilder()
             .setCity(city)
-            .setShowTime(showTime)
+            .setShowTime(showDate)
             .setFilmId(filmId)
             .build();
         return ResponseEntity.ok(filmController.getSchedule(wrapper));
@@ -88,5 +93,12 @@ public class FilmRestController {
             .setFilmId(film)
             .build();
         return ResponseEntity.ok(bookingController.getBookings(wrapper));
+    }
+    
+     @RequestMapping(value = "/film",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8")
+    public ResponseEntity<String> updateOwner(@RequestBody Films film) throws TimeoutException, SocketTimeoutException, SocketException {
+        return ResponseEntity.ok(filmController.updateFilm(film));
     }
 }

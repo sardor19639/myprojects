@@ -59,11 +59,11 @@ public class FilmService {
         Films film = filmRepository.findFilmsById(wrapper.getFilmId());
         checkFilmOnNull(film, message);
         Calendar c = Calendar.getInstance(); 
-        c.setTime(wrapper.getShowTime()); 
+        c.setTime(wrapper.getShowDate()); 
         c.add(Calendar.DATE, 1);
         Date showTime2 = c.getTime();
         System.out.println(showTime2);
-        List<Schedule> scheduleList = scheduleRepository.findScheduleByCityAndFilmIdAndShowTimeBetween(wrapper.getCity(),film,wrapper.getShowTime()
+        List<Schedule> scheduleList = scheduleRepository.findScheduleByCityAndFilmIdAndShowTimeBetween(wrapper.getCity(),film,wrapper.getShowDate()
                 ,showTime2);
         final JsonObject resJO = new JsonObject();
         resJO.addProperty("error", 0);
@@ -87,6 +87,29 @@ public class FilmService {
         final JsonArray filmsJA = new JsonArray();
         filmsList.forEach(p -> filmsJA.add(p.toJson()));
         resJO.add("films", filmsJA);
+        return resJO;
+    }
+    
+    public JsonObject updateFilm(Films filmBody, LogMessage message) {
+        Films film = filmRepository.findFilmsById(filmBody.getId());
+        JsonObject resJO = new JsonObject();
+        checkFilmOnNull(film, message);
+        if (filmBody.getName() == null && filmBody.getGenre() == null && filmBody.getCountry() == null &&
+                filmBody.getDescription() == null && filmBody.getDirector() == null)
+            return resJO;
+        if(filmBody.getName() != null)
+            film.setName(filmBody.getName());
+        if(filmBody.getGenre() != null)
+            film.setGenre(filmBody.getGenre());
+        if(filmBody.getCountry() != null)
+            film.setCountry(filmBody.getCountry());
+        if(filmBody.getDescription() != null)
+            film.setDescription(filmBody.getDescription());
+        if(filmBody.getDirector() != null)
+            film.setDirector(filmBody.getDirector());
+        filmRepository.save(film);
+        resJO.addProperty("error", 0);
+        resJO.add("owner", film.toJson());
         return resJO;
     }
     
